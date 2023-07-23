@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="Fashion Matrix: Editing Your Photo by Just Talking">
+  <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Fashion Matrix: Editing Your Photo by Just Talking</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -291,40 +289,31 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
-
       <!-- Archi. -->
       <div class="column is-full-width">
         <h2 class="title is-3">Architecture</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              The system is composed of three modules: (1) Fashion Assistant , (2) Fashion Designer,
-              and (3) AutoMasker, which are at different levels, and all of them use LLM as the support of
-              intelligent text processing. Fashion Assistant engages in user interactions to collect
-              requirements, which are subsequently examined and transformed into instructions by Fashion Designer.
-              AutoMasker identifies the editing region based on the semantic context of the instructions.
-              Hierarchical design simplifies the logical processing flow and facilitates efficient information processing.
-            </p>
-            <img src="static/images/system.jpeg">
-          </div>
-
+        <div class="content has-text-justified">
+          <p>
+            The system is composed of three modules: (1) Fashion Assistant , (2) Fashion Designer,
+            and (3) AutoMasker, which are at different levels, and all of them use LLM as the support of
+            intelligent text processing. Fashion Assistant engages in user interactions to collect
+            requirements, which are subsequently examined and transformed into instructions by Fashion Designer.
+            AutoMasker identifies the editing region based on the semantic context of the instructions.
+            Hierarchical design simplifies the logical processing flow and facilitates efficient information processing.
+          </p>
+          <img src="static/images/system.jpeg">
         </div>
       </div>
-
       <!-- Coseg -->
       <div class="column is-full-width">
-        <div class="content">
-          <h2 class="title is-3">CoSegmentation</h2>
-          <p>
-            AutoMasker combines human semantic segmentation with pose estimation to obtain a more fine-grained
-            semantic segmentation map - CoSegmentation.
-          </p>
-          <img src="static/images/cosegm.jpeg">
-        </div>
+        <h2 class="title is-3">CoSegmentation</h2>
+        <p>
+          AutoMasker combines human semantic segmentation with pose estimation to obtain a more fine-grained
+          semantic segmentation map - CoSegmentation.
+        </p>
+        <img src="static/images/cosegm.jpeg">
       </div>
-
     </div>
 
 
@@ -332,9 +321,6 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Functions</h2>
-
-        <!-- Interpolating. -->
-<!--        <h3 class="title is-4"></h3>-->
         <div class="content has-text-justified">
           <p>
             Fashion Matrix supports a wide range of editing tasks including region-specific
@@ -342,32 +328,7 @@
           </p>
           <img src="static/images/case.jpeg">
         </div>
-<!--        <div class="columns is-vcentered interpolation-panel">-->
-<!--          <div class="column is-3 has-text-centered">-->
-<!--            <img src="./static/images/case.png"-->
-<!--                 class="interpolation-image"-->
-<!--                 alt="Interpolate start reference image."/>-->
-<!--&lt;!&ndash;            <p>Start Frame</p>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <div class="column interpolation-video-column">-->
-<!--            <div id="interpolation-image-wrapper">-->
-<!--              Loading...-->
-<!--            </div>-->
-<!--            <input class="slider is-fullwidth is-large is-info"-->
-<!--                   id="interpolation-slider"-->
-<!--                   step="1" min="0" max="100" value="0" type="range">-->
-<!--          </div>-->
-<!--          <div class="column is-3 has-text-centered">-->
-<!--            <img src="./static/images/interpolate_end.jpg"-->
-<!--                 class="interpolation-image"-->
-<!--                 alt="Interpolation end reference image."/>-->
-<!--            <p class="is-bold">End Frame</p>-->
-<!--          </div>-->
-<!--        </div>-->
         <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
         <h3 class="title is-4">Replacement</h3>
         <div class="content has-text-justified">
           <p>
