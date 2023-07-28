@@ -15,6 +15,7 @@ Fashion Matrix, a versatile fashion editing AI system, completes rich person ima
 </div>
 
 ## Updates
+- **`2023/07/28`**: [**Demo(Label version)**](https://f07d39fb88a8fa46c2.gradio.live) is released.
 - **`2023/07/26`**: [**Video**](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s) and [**Project Page**](https://zheng-chong.github.io/FashionMatrix/) are released.
 - **`2023/07/25`**: [**Arxiv Preprint**](https://arxiv.org/abs/2307.13240) is released.
 
