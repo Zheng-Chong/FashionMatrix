@@ -6,7 +6,7 @@
 [[`ArXiv`](https://arxiv.org/abs/2307.13240)]
 [[`PDF`](https://arxiv.org/pdf/2307.13240.pdf)]
 [[`Video`](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s)]
-[[`Demo(coming soon)`]()]
+[[`Demo`](https://f07d39fb88a8fa46c2.gradio.live)]
 
 Fashion Matrix, a versatile fashion editing AI system, completes rich person image editing through flexible and interactive visual or verbal user prompt guidance.
 
