@@ -6,7 +6,7 @@
 [[`ArXiv`](https://arxiv.org/abs/2307.13240)]
 [[`PDF`](https://arxiv.org/pdf/2307.13240.pdf)]
 [[`Video`](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s)]
-[[`Demo`](https://00ff74e0c57fea7117.gradio.live)]
+[[`Demo`](https://3040fb6b6c32c3715e.gradio.live)]
 
 Fashion Matrix, a versatile fashion editing AI system, completes rich person image editing through flexible and interactive visual or verbal user prompt guidance.
 
@@ -15,7 +15,7 @@ Fashion Matrix, a versatile fashion editing AI system, completes rich person ima
 </div>
 
 ## Updates
-- **`2023/07/28`**: [**Demo(Label version)**](https://00ff74e0c57fea7117.gradio.live) is released.
+- **`2023/07/28`**: [**Demo(Label version)**](https://3040fb6b6c32c3715e.gradio.live) is released.
 - **`2023/07/26`**: [**Video**](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s) and [**Project Page**](https://zheng-chong.github.io/FashionMatrix/) are released.
 - **`2023/07/25`**: [**Arxiv Preprint**](https://arxiv.org/abs/2307.13240) is released.
 
