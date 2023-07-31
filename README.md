@@ -8,7 +8,8 @@
 [[`Video`](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s)]
 [[`Demo`](https://3040fb6b6c32c3715e.gradio.live)]
 
-Fashion Matrix, a versatile fashion editing AI system, completes rich person image editing through flexible and interactive visual or verbal user prompt guidance.
+Fashion Matrix is dedicated to bridging various visual and language models and continuously refining its capabilities as a comprehensive fashion AI assistant. 
+This project will continue to update new features and optimization effects.
 
 <div align="center">
   <img src="static/images/teaser.jpeg" width="100%" height="100%"/>
