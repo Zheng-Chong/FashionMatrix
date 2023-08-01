@@ -16,7 +16,7 @@ This project will continue to update new features and optimization effects.
 </div>
 
 ## Updates
-- **`2023/08/01`**: [**Code**] of v1.1 is released. The details are a bit different from the original version (Paper).
+- **`2023/08/01`**: **Code** of v1.1 is released. The details are a bit different from the original version (Paper).
 - **`2023/08/01`**: [**Demo(Label) v1.1**](https://e5290a5b2c2e8b292e.gradio.live) with new *AI model* function and security updates is released.
 - **`2023/07/28`**: Demo(Label) v1.0 is released.
 - **`2023/07/26`**: [**Video**](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s) and [**Project Page**](https://zheng-chong.github.io/FashionMatrix/) are released.
