@@ -46,6 +46,7 @@ Maybe the simplified version of Fashion Matrix will be released in the future)
 
 ## Acknowledgement
 Our work is based on the following excellent works:
+
  [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v20) is a finely calibrated model derived from 
 [Stable Diffusion](https://github.com/Stability-AI/stablediffusion) v1.5, designed to enhance the realism of generated 
 images, with a particular focus on human portraits.
@@ -54,6 +55,7 @@ conditional control models, enabling
 [the concurrent utilization of multiple ControlNets](https://huggingface.co/docs/diffusers/v0.18.2/en/api/pipelines/controlnet#diffusers.StableDiffusionControlNetPipeline).
 This significantly broadens the potential and applicability of text-to-image techniques.
 [BLIP](https://github.com/salesforce/BLIP) facilitates a rapid visual question-answering within our system.
+
 [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) create a very interesting demo by combining
 [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO) and
 [Segment Anything](https://github.com/facebookresearch/segment-anything) which aims to detect and segment anything with text inputs!
