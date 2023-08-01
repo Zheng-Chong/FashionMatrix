@@ -6,7 +6,7 @@
 [[`ArXiv`](https://arxiv.org/abs/2307.13240)]
 [[`PDF`](https://arxiv.org/pdf/2307.13240.pdf)]
 [[`Video`](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s)]
-[[`Demo(Label)`](https://e5290a5b2c2e8b292e.gradio.live)]
+[[`Demo(Label)`](https://ec20e5bd5b25f49be7.gradio.live)]
 
 Fashion Matrix is dedicated to bridging various visual and language models and continuously refining its capabilities as a comprehensive fashion AI assistant. 
 This project will continue to update new features and optimization effects.
@@ -17,7 +17,7 @@ This project will continue to update new features and optimization effects.
 
 ## Updates
 - **`2023/08/01`**: **Code** of v1.1 is released. The details are a bit different from the original version (Paper).
-- **`2023/08/01`**: [**Demo(Label) v1.1**](https://e5290a5b2c2e8b292e.gradio.live) with new *AI model* function and security updates is released.
+- **`2023/08/01`**: [**Demo(Label) v1.1**](https://ec20e5bd5b25f49be7.gradio.live) with new *AI model* function and security updates is released.
 - **`2023/07/28`**: Demo(Label) v1.0 is released.
 - **`2023/07/26`**: [**Video**](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s) and [**Project Page**](https://zheng-chong.github.io/FashionMatrix/) are released.
 - **`2023/07/25`**: [**Arxiv Preprint**](https://arxiv.org/abs/2307.13240) is released.
