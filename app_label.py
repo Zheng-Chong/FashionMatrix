@@ -39,10 +39,6 @@ def submit_function(task, part_reform, part_add, part_input, prompt, src_img):
                   'controlnet_conditioning_scale': [0.7, 0.5, 0.4],
                   'control_guidance_start': [0.0, 0.0, 0.0],
                   'control_guidance_end': [1.0, 0.8, 0.3]}
-    elif task in ['recolor']:
-        kwargs = {'task': {'category': 'recolor', 'origin': 'bare body', 'target': prompt},
-                  'controlnet': ['inpaint', 'lineart'],
-                  'controlnet_conditioning_scale': [0.7, 0.8]}
     else:
         part = part_input if part_input is not None else (part_add if task in ['add'] else part_reform)
         if part is None:
@@ -50,6 +46,8 @@ def submit_function(task, part_reform, part_add, part_input, prompt, src_img):
         if task in ['remove']:
             prompt = 'bared skin, clothing'
         kwargs = {'task': {'category': task, 'origin': part, 'target': prompt}}
+        if task in ['recolor']:
+            kwargs.update({'controlnet': ['inpaint', 'lineart'], 'controlnet_conditioning_scale': [0.7, 0.8]})
 
     src_img = move_to_cache(src_img, cache_path=cache_folder)
     kwargs.update({'img_path': src_img})
