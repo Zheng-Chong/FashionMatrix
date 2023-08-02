@@ -91,7 +91,7 @@ def task_select(task, exist_parts):
         raise gr.Error("Please upload an image first!")
     if task == 'add':
         return [gr.update(visible=False),
-                gr.update(visible=True, choices=exist_parts),
+                gr.update(visible=True, choices=[part for part in part_options if part not in exist_parts]),
                 gr.update(visible=True), gr.update(visible=True), gr.update(visible=True)]
     elif task == 'remove':
         clothes = ['top', 'bottoms', 'coat', 'jacket', 'dress', 'neckline', 'hair']
