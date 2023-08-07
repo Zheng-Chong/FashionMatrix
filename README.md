@@ -6,7 +6,7 @@
 [[`ArXiv`](https://arxiv.org/abs/2307.13240)]
 [[`PDF`](https://arxiv.org/pdf/2307.13240.pdf)]
 [[`Video`](https://www.youtube.com/watch?v=1z-v0RSleMg&t=3s)]
-[[`Demo(Label)`](https://0742dc8730a5a94a7a.gradio.live)]
+[[`Demo(temporarily offline)`](https://0742dc8730a5a94a7a.gradio.live)]
 
 Fashion Matrix is dedicated to bridging various visual and language models and continuously refining its capabilities as a comprehensive fashion AI assistant. 
 This project will continue to update new features and optimization effects.
