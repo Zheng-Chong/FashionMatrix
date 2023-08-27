@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Fashion Matrix: Editing Your Photo by Just Talking">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fashion Matrix: Editing Your Photo by Just Talking</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Fashion Matrix: Editing Your Photo by Just Talking</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Zheng Chong</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="">Xujie Zhang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Fuwei Zhao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Zhenyu Xie</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Xiaodan Liang</a><sup>*1,2</sup>,
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shenzhen Campus of Sun Yat-Sen University,</span>
+            <span class="author-block"><sup>2</sup>Peng Cheng Laboratory</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2307.13240.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!--  Arxiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2307.13240"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!--  Demo Link. -->
+              <span class="link-block">
+                <a href="https://0742dc8730a5a94a7a.gradio.live"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-gamepad"></i>
+                  </span>
+                  <span>Demo(temporarily offline)</span>
+                  </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=1z-v0RSleMg&t=6s"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Zheng-Chong/FashionMatric"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.jpeg" alt="teaser">
+      <h2 class="subtitle has-text-centered">
+        Fashion Matrix demonstrates the capacity for engaging in multiple rounds of user dialogue, enabling proficient
+        and precise photo editing of individuals based on provided instructions.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The utilization of Large Language Models (LLMs) for the construction of AI systems has garnered significant
+            attention across diverse fields. The extension of LLMs to the domain of fashion holds substantial commercial
+            potential but also inherent challenges due to the intricate semantic interactions in fashion-related generation.
+
+            To address this issue, we developed a hierarchical AI system called Fashion Matrix dedicated to
+            editing photos by just talking. This system facilitates diverse prompt-driven tasks,
+            encompassing garment or accessory replacement, recoloring, addition, and removal.
+          </p>
+          <p>
+            Specifically, Fashion Matrix employs LLM as its foundational support and engages in iterative
+            interactions with users. It employs a range of Semantic Segmentation Models (e.g., Grounded-SAM,
+            MattingAnything, etc.) to delineate the specific editing masks based on user instructions. Subsequently,
+            Visual Foundation Models (e.g., Stable Diffusion, ControlNet, etc.) are leveraged to generate edited images
+            from text prompts and masks, thereby facilitating the automation of fashion editing processes.
+         </p>
+          <p>
+            Experiments demonstrate the outstanding ability of Fashion Matrix to explores the collaborative potential
+            of functionally diverse pre-trained models in the domain of fashion editing
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="1080" height="1032" src="https://www.youtube.com/embed/1z-v0RSleMg"
+                  title="Fashion Matrix: Editing Your Photo by Just Talking" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Architecture. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Architecture</h2>
+        <div class="content has-text-justified">
+          <p>
+            The system is composed of three modules: (1) Fashion Assistant , (2) Fashion Designer,
+            and (3) AutoMasker, which are at different levels, and all of them use LLM as the support of
+            intelligent text processing. Fashion Assistant engages in user interactions to collect
+            requirements, which are subsequently examined and transformed into instructions by Fashion Designer.
+            AutoMasker identifies the editing region based on the semantic context of the instructions.
+            Hierarchical design simplifies the logical processing flow and facilitates efficient information processing.
+          </p>
+          <img src="static/images/system.jpeg">
+        </div>
+      </div>
+    </div>
+    <!-- CoSegmentation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">CoSegmentation</h2>
+        <div class="content has-text-justified">
+          <p>
+            AutoMasker combines human semantic segmentation with pose estimation to obtain a more fine-grained
+            semantic segmentation map - CoSegmentation.
+          </p>
+          <img src="static/images/cosegm.jpeg">
+        </div>
+      </div>
+    </div>
+    <!-- Functions. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Functions</h2>
+        <div class="content has-text-justified">
+          <p>
+            Fashion Matrix supports a wide range of editing tasks including region-specific
+            replacement, recoloring, addition, and removal of fashion concepts.
+          </p>
+          <img src="static/images/case.jpeg">
+        </div>
+        <br/>
+        <h3 class="title is-4">Replacement</h3>
+        <div class="content has-text-justified">
+          <p>
+            Results of the replacement task implemented by Fashion Matrix. The replaced target is integrated with the
+            source image seamlessly, adeptly accounting for authentic lighting conditions and occlusion challenges
+          </p>
+          <img src="static/images/replacement.jpeg">
+        </div>
+        <h3 class="title is-4">Recoloring</h3>
+        <div class="content has-text-justified">
+          <p>
+            Results of the recoloring task implemented by Fashion Matrix. Utilizing a dual set of mask and edge sketch,
+            the recoloring process is conjointly regulated, ensuring seamless integration of the generated output with
+            the unaltered regions, while preserving the shape of the original entity.
+          </p>
+          <img src="static/images/recolroing.jpeg">
+        </div>
+        <h3 class="title is-4">Removal</h3>
+        <div class="content has-text-justified">
+          <p>
+            Results of the replacement task implemented by Fashion Matrix. FashionMatrix's identification of entities
+            for removal is informed by the fine-grained CoSegmentation, coupled with the open domain segmentation
+            capabilities offered by Grounded-SAM.
+          </p>
+          <img src="static/images/removal.jpeg">
+        </div>
+        <h3 class="title is-4">Addition</h3>
+        <div class="content has-text-justified">
+          <p>
+            Results of the replacement task implemented by Fashion Matrix. Based on the positioning capabilities
+            of CoSegmentation and LLM, Fashion Matrix facilitates the incorporation of non-existent items into an image,
+            while ensuring coherence between the newly added entity and the original visual context.
+          </p>
+          <img src="static/images/addition.jpeg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our work is based on the following excellent works:
+          </p>
+          <p>
+            <a href="https://civitai.com/models/4201/realistic-vision-v20">Realistic Vision V4.0</a>
+            is a finely calibrated model derived from
+            <a href="https://github.com/Stability-AI/stablediffusion">Stable Diffusion</a> v1.5,
+            designed to enhance the realism of generated images, with a particular focus on human portraits.
+          </p>
+          <p>
+            <a href="https://github.com/lllyasviel/ControlNet-v1-1-nightly">ControlNet v1.1</a>
+            offers more comprehensive and user-friendly conditional control models,
+            enabling <a href="https://huggingface.co/docs/diffusers/v0.18.2/en/api/pipelines/controlnet#diffusers.StableDiffusionControlNetPipeline">
+            the concurrent utilization of multiple ControlNets</a>.
+            This significantly broadens the potential and applicability of text-to-image techniques.
+          </p>
+          <p>
+            <a href="https://github.com/salesforce/BLIP">BLIP</a> facilitates a rapid visual question-answering within our system</a>.
+          </p>
+          <p>
+            <a href="https://github.com/IDEA-Research/Grounded-Segment-Anything">Grounded-SAM</a>
+            create a very interesting demo by combining
+            <a href="https://github.com/IDEA-Research/GroundingDINO">Grounding DINO</a>
+            and <a href="https://github.com/facebookresearch/segment-anything">Segment Anything </a>
+            which aims to detect and segment anything with text inputs!
+          </p>
+          <p>
+            <a href="https://github.com/SHI-Labs/Matting-Anything">Matting Anything Model (MAM)</a> is an efficient and
+            versatile framework for estimating the alpha matte ofany instance in an image with flexible and interactive
+            visual or linguistic user prompt guidance.
+          </p>
+          <p>
+            <a href="https://github.com/facebookresearch/detectron2">Detectron2</a>
+             is a next generation library that provides state-of-the-art detection and segmentation algorithms.
+            The DensePose code we adopted is based on Detectron2.
+          </p>
+          <p>
+            <a href="https://github.com/Gaoyiminggithub/Graphonomy">Graphonomy</a> has the capacity for swift and
+            effortless analysis of diverse anatomical regions within the human body.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @misc{chong2023fashion,
+        title={Fashion Matrix: Editing Photos by Just Talking},
+        author={Zheng Chong and Xujie Zhang and Fuwei Zhao and Zhenyu Xie and Xiaodan Liang},
+        year={2023},
+        eprint={2307.13240},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV}
+      }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/pdf/2307.13240.pdf">
+         <!-- TODO -->
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/Zheng-Chong/FashionMatric" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is modified from <a href="https://nerfies.github.io/">Nerfies</a>. Thanks for the great work!
+          </p>
+<!--          <p>-->
+<!--            Their source code is available on <a href="https://github.com/nerfies/nerfies.github.io">GitHub</a>.-->
+<!--          </p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
