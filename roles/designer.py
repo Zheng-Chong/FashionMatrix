@@ -74,6 +74,7 @@ class FashionDesigner:
         body_parts = ['neck', 'arms', 'legs', 'feet', 'background', 'face', 'hands']
         graph = self.AM.graph(image_path, 'dict')
         graph_keys = [k for k in list(graph.keys()) if k not in body_parts and not numpy_all_zero(graph[k])]
+        print(graph_keys)
         # 2.VQA
         vqa_keys = ['necklace', 'logo', 'belt', 'bracelet']
         vqa_keys = [k for k in vqa_keys
