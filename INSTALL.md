@@ -25,38 +25,18 @@ python -m pip install -e GroundingDINO
 ## Models
 ```bash
 mkdir checkpoints
+
+```
+
+### Visual Foundation Models & Semantic Segmentation Models
+
+```bash
+# For most checkpoints, we provide them in HuggingFace, just clone it.
+git clone https://huggingface.co/zhengchong/FashionMatrix ./checkpoints
+
+# For ControlNet and BLIP, You need to clone them manually.
 cd checkpoints
-```
-### Semantic Segmentation Models
-```bash
-# Download the pretrained groundingdino-swin-tiny and sam-vit-h models
-wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
-wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
-
-# Download MAM models
-https://drive.google.com/drive/folders/1Bor2jRE0U-U6PIYaCm6SZY7qu_c1GYfq?usp=sharing
-
-# Download DensePose Model and Config
-wget https://dl.fbaipublicfiles.com/densepose/densepose_rcnn_R_50_FPN_s1x/165712039/model_final_162be9.pkl
-wget https://github.com/facebookresearch/detectron2/blob/main/projects/DensePose/configs/Base-DensePose-RCNN-FPN.yaml
-wget https://github.com/facebookresearch/detectron2/blob/main/projects/DensePose/configs/densepose_rcnn_R_50_FPN_s1x.yaml
-
-# Graphonomy Model can be downloaded from:
-https://drive.google.com/file/d/1eUe18HoH05p0yFUd_sN6GXdTj82aW0m9/view
-```
-
-### Visual Foundation Models
->Realistic Vision V4.0 (V5.0 is a bit unstable in our test) finetuned from SD-v1.5 can be downloaded from [CivitAI](https://civitai.com/models/4201?modelVersionId=125411).
->After downloading the safetensor file, you must convert it to diffusers format following instructions [here](https://github.com/haofanwang/Lora-for-Diffusers#full-models).
-
-```bash
-# ControlNet (Make sure you have git-lfs installed (https://git-lfs.com))
-git clone https://huggingface.co/lllyasviel/control_v11p_sd15_softedge
-git clone https://huggingface.co/lllyasviel/control_v11p_sd15_inpaint
 git clone https://huggingface.co/lllyasviel/control_v11p_sd15_lineart
-git clone https://huggingface.co/lllyasviel/control_v11p_sd15_openpose
-
-# BLIP
 git clone https://huggingface.co/Salesforce/blip-vqa-capfilt-large
 ```
 
@@ -64,19 +44,20 @@ The checkpoints folder should look like this:
 ```bash
 checkpoints
 ├── blip-vqa-capfilt-large
-├── ControlNet
-    ├── control_v11p_sd15_inpaint
-    ├── control_v11p_sd15_softedge
-    ├── control_v11p_sd15_lineart
-    ├── control_v11p_sd15_openpose
+├── control_v11p_sd15_lineart
 ├── realisticVisionV40_v40VAE
-├── Base-DensePose-RCNN-FPN.yaml
-├── densepose_rcnn_R_50_FPN_s1x.yaml
-├── model_final_162be9.pkl
-├── groundingdino_swint_ogc.pth
-├── sam_vit_h_4b8939.pth
-├── mam_sam_vitb.pth
-├── inference.pth
+├── densepose
+    ├── Base-DensePose-RCNN-FPN.yaml
+    ├── densepose_rcnn_R_50_FPN_s1x.yaml
+    ├── model_final_162be9.pkl
+├── graphonomy
+    ├── inference.pth
+├── grounded-sam
+    ├── groundingdino_swint_ogc.pth
+    ├── sam_vit_b_01ec64.pth
+├── Annotators
+    ├── sk_model.pth
+    ├── sk_model2.pth
 ```
 ### LLM
 To deploy Vicuna-13B in OpenAI API, follow this [instructions](https://github.com/lm-sys/FastChat/blob/main/docs/openai_api.md).
