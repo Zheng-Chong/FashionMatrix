@@ -48,13 +48,7 @@ def submit_function(task, part_reform, part_add, part_input, prompt, src_img):
         raise gr.Error("Please select a task!")
 
     if task in ['AI model']:
-        kwargs = {'task': {'category': 'recolor', 'origin': 'bare body', 'target': prompt},
-                  'controlnet': ['inpaint', 'openpose', 'lineart'],
-                  'controlnet_conditioning_scale': [0.7, 0.5, 0.4],
-                  'control_guidance_start': [0.0, 0.0, 0.0],
-                  'control_guidance_end': [1.0, 0.8, 0.3]}
-    elif task in ['outpaint']:
-        kwargs = {'prompt': prompt}
+        kwargs = {'task': {'category': 'recolor', 'origin': 'bared body', 'target': prompt}}
     else:
         part = part_input if part_input is not None else (part_add if task in ['add'] else part_reform)
         if part is None:
@@ -62,11 +56,11 @@ def submit_function(task, part_reform, part_add, part_input, prompt, src_img):
         if task in ['remove']:
             prompt = 'bared skin, clothing'
         kwargs = {'task': {'category': task, 'origin': part, 'target': prompt}}
-        if task in ['recolor']:
-            kwargs.update({'controlnet': ['inpaint', 'lineart'], 'controlnet_conditioning_scale': [0.7, 0.8]})
+        # if task in ['recolor']:
+        #     kwargs.update({'controlnet': ['lineart']})
 
     # src_img = move_to_cache(src_img, cache_path=cache_folder)
-    kwargs.update({'img_path': src_img})
+    kwargs.update({'image_path': src_img})
     print(f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {task}')
     print(f'  Source: {os.path.basename(src_img)}')
 
@@ -123,7 +117,7 @@ if __name__ == '__main__':
                 image_upload_warning = gr.Markdown(IMAGE_UPLOAD, visible=True)
                 outpaint_guide = gr.Markdown(OUTPAINT_GUIDE, visible=False)
                 # Task
-                task = gr.Radio(['replace', 'remove', 'add', 'recolor', 'AI model', 'outpaint'], label="Task",
+                task = gr.Radio(['replace', 'remove', 'add', 'recolor', 'AI model'], label="Task",
                                 info="Select the task you want to perform on the uploaded image. ", visible=False)
                 # Part ( reform, add or input )
                 with gr.Group():

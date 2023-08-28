@@ -9,29 +9,30 @@ from roles.utils import (
     numpy_or, numpy_diff, image_normalization, resize
 )
 
-PART_CLASSIFY = """Does '{part}' belongs to the following categories?
+PART_CLASSIFY = """
 {item_parts_str}
-Answer 'yes' or 'no' and then give the index number of the category if yes in the list: """
+Does '{part}' in above category list? Answer 'yes' or 'no', and the index number:
+"""
 
 COVER_BODY = """After replacing or adding fashion item, some bared body parts may be covered.
 Example:
 ***********************************************
-Optional body parts: ['neck', 'big arms', 'forearms', 'thighs', 'legs']
+Optional body parts: ['neck', 'big arms', 'forearms', 'thighs', 'legs', 'feet']
 Task: Replace the t-shirt with a black sweater
 Thought: Sweater usually has Longer sleeve and turtle neckline compared with t-shirt, it may cover the bared neck, big arms, forearms.
 Covered body parts: ['neck', 'big arms', 'forearms']
 ***********************************************
-Optional body parts: ['neck', 'big arms', 'forearms', 'thighs', 'legs']
+Optional body parts: ['neck', 'big arms', 'forearms', 'thighs', 'legs', 'feet']
 Task: Add a yellow hat
 Thought: Hat will not cover any part above.
 Covered body parts: []
 ***********************************************
-Optional body parts: ['neck', 'big arms', 'forearms', 'thighs']
+Optional body parts: ['neck', 'big arms', 'forearms', 'thighs', 'legs', 'feet']
 Task: Add a watch
 Thought: The watch is worn on the bared forearms.
 Covered body parts: ['forearms']
 ***********************************************
-Optional body parts: ['neck', 'forearms', 'thighs', 'legs']
+Optional body parts: ['neck', 'big arms', 'forearms', 'thighs', 'legs', 'feet']
 Task: Replace shorts with a pair of pants
 Thought: Pants are longer than shorts and cover the bared legs, thighs.
 Covered body parts: ['legs', 'thighs']
@@ -46,7 +47,7 @@ class AutoMasker:
     bared_body_parts = ['neck', 'big arms', 'forearms', 'thighs', 'legs', 'feet']
     co_segm_parts = ['top', 'coat', 'bottoms', 'dress', 'pants', 'skirt', 'sleeves', 'background',
                      'scarf', 'gloves', 'sunglasses', 'socks', 'shoes', 'hat', 'necklace', 'bag', 'ring', 'watch',
-                     'hair', 'face', 'arms', 'legs'
+                     'hair', 'face', 'arms', 'legs', "bared body"
                      ]
     add_parts = ['dress', 'coat', 'jacket', 'necklace', 'scarf', 'gloves', 'sunglasses', 'hat', 'logo', 'sleeves']
 
@@ -164,8 +165,22 @@ class AutoMasker:
         else:
             raise NotImplementedError(f'mode {mode} not implemented for dense!')
 
-    def segm_to_dict(self, segm: np.array, segm_type='graph') -> dict:
+    def grounded_sam(self, image_path: str, prompt: str, mode='numpy'):
+        sam_path = image_path[:image_path.rfind('.')] + f'-SAM_{prompt}.png'
+        if not os.path.exists(sam_path):
+            sam_path = self.hpm_api.segment(image_path, text_prompt=prompt)
+        if mode == 'path':
+            return sam_path
+        image = Image.open(sam_path).convert('L')
+        if mode == 'image':
+            return image
+        if mode == 'numpy':
+            return np.array(image) / 255
+        raise NotImplementedError(f'mode {mode} not implemented for grounded-sam!')
+
+    def segm_to_dict(self, segm: Image.Image, segm_type='graph') -> dict:
         assert segm_type in ['graph', 'dense'], "Segm Type Must Be In ['graph', 'dense']"
+        segm = np.array(segm)
         segm_dict = {}
         segm_index = self.GRAPH_INDEX_MAP.items() if segm_type == 'graph' else self.DENSE_INDEX_MAP.items()
         for name, index in segm_index:
@@ -187,7 +202,7 @@ class AutoMasker:
 
         # Edge Refine using SAM, it can obtain more clear background mask.
         if edge_refine:
-            person_mask = np.array(self.hpm_api.segment(image_path, text_prompt='person')) / 255
+            person_mask = self.grounded_sam(image_path, 'person', mode='numpy')
             for k in graph_dict:
                 graph_dict[k] = graph_dict[k] * person_mask
             graph_dict['background'] = 1 - person_mask
@@ -224,9 +239,7 @@ class AutoMasker:
         # Grounded-SAM to detect parts that are not segmented by Graphonomy and DensePose
         for part in ['necklace', 'watch', 'bag', 'ring', 'sleeves']:
             if part in parts:
-                co_segm_dict[part] = self.hpm_api.segment(image_path, text_prompt=part,
-                                                          box_threshold=0.5, text_threshold=0.5)
-                co_segm_dict[part] = np.array(co_segm_dict[part]) / 255
+                co_segm_dict[part] = self.grounded_sam(image_path, part, mode='numpy')
 
         # Detect parts not been processed ( Unimplemented )
         rest_parts = set(parts) - set(co_segm_dict.keys())
@@ -296,12 +309,17 @@ class AutoMasker:
         return add_masks
 
     def part_classify(self, part: str, options: list[str]):
-        item_parts_str = '\n'.join([f'{i + 1}.{p}' for i, p in options])
+        if part in options:
+            return part
+        item_parts_str = '\n'.join([f'{i + 1}.{p}' for i, p in enumerate(options)])
         format_str = PART_CLASSIFY.format(part=part, item_parts_str=item_parts_str)
-        response, _ = self.chat_api.chat(format_str, [])
+        print(format_str)
+        response, _ = self.chat_api.chat(format_str, [], temperature=0.01)
+        print(response)
         if response.lower().startswith('yes'):
             index = int(first_digits(response))
             part = options[index - 1]
+            print("  Part classified as:", part)
             return part
         return None
 
@@ -312,7 +330,8 @@ class AutoMasker:
         format_str = COVER_BODY.format(task=task_str, bared_body_parts=self.bared_body_parts)
         response, _ = self.chat_api.chat(format_str, [])
         covered_parts = eval(response[response.find('['):response.find(']') + 1])
-        # print("  Covered body parts:", covered_parts)
+        covered_parts = [p for p in covered_parts if p in self.bared_body_parts]
+        print("    Covered body parts:", covered_parts)
         return covered_parts
 
     def __call__(self, image_path: str, task: dict):
@@ -320,6 +339,7 @@ class AutoMasker:
         # Add Task
         if category in ['add']:
             part = self.part_classify(origin, self.add_parts)
+            print("    Mask Part:", part)
             if part:  # Find predefined part
                 return self.predefined_add_mask(image_path=image_path, parts=[part])[part]
             else:
@@ -328,8 +348,10 @@ class AutoMasker:
         elif category in ['recolor', 'remove', 'replace']:
             part = self.part_classify(origin, self.co_segm_parts)
             if part:  # Find predefined part
+                print("   Mask Part:", part)
                 mask = self.co_segm_efficient(image_path=image_path, parts=[part])[part]
             else:  # SAM to detect
+                print("   SAM Part:", origin)
                 mask = self.hpm_api.segment(image_path=image_path, text_prompt=origin)
                 mask = Image.open(mask).convert('L')
                 mask = np.array(mask) / 255
@@ -338,7 +360,7 @@ class AutoMasker:
                 return max_pooling(mask, 7, 1)
             elif category in ['replace']:
                 return max_pooling(
-                    numpy_or([mask, self.co_segm_efficient(image_path, parts=self.parts_covered(task))]),
+                    numpy_or([mask, self.co_segm_efficient(image_path, parts=self.parts_covered(task), merge=True)]),
                     9, 1)
         else:
             raise NotImplementedError(f"Task category '{category}' not implemented")

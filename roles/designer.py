@@ -74,7 +74,7 @@ class FashionDesigner:
         body_parts = ['neck', 'arms', 'legs', 'feet', 'background', 'face', 'hands']
         graph = self.AM.graph(image_path, 'dict')
         graph_keys = [k for k in list(graph.keys()) if k not in body_parts and not numpy_all_zero(graph[k])]
-        print(graph_keys)
+        # print(graph_keys)
         # 2.VQA
         vqa_keys = ['necklace', 'logo', 'belt', 'bracelet']
         vqa_keys = [k for k in vqa_keys
@@ -116,9 +116,21 @@ class FashionDesigner:
         return task
 
     def task_execute(self, task: dict, image_path: str, mode='quick', **kwargs):
+        print(f"    Task: {task}")
+        # Pre-Resize image to <= 1024 and convert to png
+        img = Image.open(image_path).convert("RGB")
+        if max(img.height, img.width) > 1024:
+            img = resize(img, 1024, sample=Image.LANCZOS)
+            img.save(image_path)
+        w, h = img.width, img.height
+        if not image_path.endswith(".png"):
+            image_path = image_path[:image_path.rfind(".")] + ".png"
+            img.save(image_path)
+
+        # Pre-Process task
         if task['category'] == 'ai model':
             task['category'] = 'recolor'
-            task['origin'] = 'bare bared body'
+            task['origin'] = 'bared body'
 
         # Get target Mask
         mask = self.AM(image_path, task)
@@ -133,7 +145,7 @@ class FashionDesigner:
             prompt = task['target']
         else:
             raise NotImplementedError(f"Mode {mode} not implemented.")
-        print(f"Prompt: {prompt}")
+        print(f"    Prompt: {prompt}")
 
         # Assemble kwargs
         kwargs['prompt'] = prompt + ADDED_PROMPT
@@ -143,24 +155,14 @@ class FashionDesigner:
             kwargs['negative_prompt'] = NEGATIVE_PROMPT
         if task['category'] in ['recolor'] and 'controlnet' not in kwargs:
             kwargs['controlnet'] = ['lineart']
-            kwargs['control_image'] = [
-                self.vfm_api.lineart(kwargs['image'], False, min(kwargs['image'].width, kwargs['image'].height),
-                                     min(kwargs['image'].width, kwargs['image'].height))]
+            kwargs['control_image'] = [self.vfm_api.lineart(image_path, False, min(w, h), min(w, h))]
 
         # Generate the result
         result_paths = self.vfm_api.controlnet(**kwargs)
-        if len(result_paths) == 0:
-            print("Result: No safe result generated.")
-            return './static/images/NSFW.jpg'
-        return result_paths[0]
+
+        return result_paths
 
     def __call__(self, image_path: str, tasks: list[str], mode='quick', **kwargs):
-        # Pre-Resize image to <= 1024
-        img = Image.open(image_path).convert("RGB")
-        if max(img.height, img.width) > 1024:
-            img = resize(img, 1024, sample=Image.LANCZOS)
-            img.save(image_path)
-
         # Iterate each task
         working_image_path = image_path
         for task in tasks:

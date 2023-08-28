@@ -4,8 +4,7 @@ import numpy as np
 import torch
 
 from PIL import Image
-from diffusers import ControlNetModel, StableDiffusionControlNetInpaintPipeline, \
-    StableDiffusionControlNetImg2ImgPipeline, DDIMScheduler
+from diffusers import ControlNetModel, StableDiffusionControlNetInpaintPipeline, DDIMScheduler
 from diffusers.pipelines.stable_diffusion import StableDiffusionPipelineOutput
 from diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_controlnet import MultiControlNetModel
 from transformers import BlipProcessor, BlipForQuestionAnswering
@@ -56,6 +55,7 @@ class BLIP:
         answer = self.processor.decode(out[0], skip_special_tokens=True)
         return answer
 
+
 class InpaintControlNet:
     controlnet_models = {
         'softedge': 'control_v11p_sd15_softedge',
@@ -90,10 +90,12 @@ class InpaintControlNet:
         self.pipe.enable_model_cpu_offload()
 
     def __call__(self, prompt: str, image_path: str, mask_image_path: str,
-                 control_image: list[Image.Image] = None,
+                 control_image: list[str] = None,
                  controlnet: list[str] = None, **kwargs) -> list[str]:
         image = Image.open(image_path).convert("RGB")
         mask_image = Image.open(mask_image_path).convert("L")
+        if control_image is not None:
+            control_image = [Image.open(path).convert("RGB") for path in control_image]
         if not isinstance(controlnet, list) and not isinstance(controlnet, str):
             controlnet = ['lineart']
             control_image = [mask_image]

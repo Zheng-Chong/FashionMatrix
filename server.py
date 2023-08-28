@@ -48,9 +48,11 @@ async def lineart(request: Request):
     json_post = json.dumps(json_post_raw)
     json_post_list = json.loads(json_post)
     kwargs = dict(json_post_list)
+    result_path = kwargs['input_image'].replace(".", "-lineart.")
     kwargs['input_image'] = Image.open(kwargs['input_image']).convert('RGB')
-    answer = assemble_response({'response': model_lineart(**kwargs)})
-    torch_gc(model_lineart.device)
+    lineart_image = model_lineart(**kwargs)
+    lineart_image.save(result_path)
+    answer = assemble_response({'response': result_path})
     return answer
 
 

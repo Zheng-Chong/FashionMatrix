@@ -16,6 +16,7 @@ This project will continue to update new features and optimization effects.
 </div>
 
 ## Updates
+- **`2023/08/01`**: **Code** of v2,0 released.
 - **`2023/08/01`**: **Code** of v1.1 is released. The details are a bit different from the original version (Paper).
 - **`2023/08/01`**: [**Demo(Label) v1.1**](https://0742dc8730a5a94a7a.gradio.live) with new *AI model* function and security updates is released.
 - **`2023/07/28`**: Demo(Label) v1.0 is released.
@@ -27,10 +28,8 @@ This project will continue to update new features and optimization effects.
 **April 25, 2023**
 
 *Fashion Matrix (Label version) v2.0*
+We have simplified the utilization of the support model, employing fewer models and GPU memory, while also retaining the original image resolution (up to 1024x1024).
 
-We updated the use of ControlNet, currently using inpaint, openpose, lineart and (softedge).
-+ Add the task **AI model**, which can replace the model while keeping the pose and outfits.
-+ Add **NSFW (Not Safe For Work) detection** to avoid inappropriate using.
 
 **April 01, 2023**
 

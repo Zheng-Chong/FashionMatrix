@@ -21,7 +21,7 @@ class VFM_API(API):
         return response.get('response')
 
     def controlnet(self, image_path: str, mask_path: str, prompt: str, **kwargs) -> str:
-        content = {"prompt": prompt, "image_path": image_path, "mask_path": mask_path}
+        content = {"prompt": prompt, "image_path": image_path, "mask_image_path": mask_path}
         content.update(kwargs)
         response = self.post("controlnet", content).get('response')  # return List[str]
         response = response[0] if len(response) > 0 else "./static/images/NSFW.jpg"  # NSFW
