@@ -25,9 +25,10 @@ This project will continue to update new features and optimization effects.
 
 ## Versions
 
-**April 25, 2023**
+**April 28, 2023**
 
 *Fashion Matrix (Label version) v2.0*
+
 We have simplified the utilization of the support model, employing fewer models and GPU memory, while also retaining the original image resolution (up to 1024x1024).
 
 
